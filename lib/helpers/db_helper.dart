@@ -6,10 +6,10 @@ import 'package:sqflite/sqlite_api.dart';
 class DBHelper {
   static Future<Database> database() async {
     final dbPath = await sql.getDatabasesPath();
-    return sql.openDatabase(path.join(dbPath, 'codeagenda.db'),
+    return sql.openDatabase(path.join(dbPath, 'db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE user_agenda(userId TEXT PRIMARY KEY, title TEXT, details TEXT, myDate TEXT, colorOne TEXT, colorTwo TEXT)');
+          'CREATE TABLE table(userId TEXT PRIMARY KEY, title TEXT, details TEXT, myDate TEXT, colorOne TEXT, colorTwo TEXT)');
     }, version: 1);
   }
 
