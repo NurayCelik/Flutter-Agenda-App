@@ -26,7 +26,7 @@ class Agendas with ChangeNotifier {
     );
     _items.add(newAgenda);
     notifyListeners();
-    DBHelper.insert('user_agenda', {
+    DBHelper.insert('table', {
       'userId': newAgenda.userId,
       'title': newAgenda.title,
       'details': newAgenda.details,
@@ -40,7 +40,7 @@ class Agendas with ChangeNotifier {
 
   Future<void> fetchAndSetAgendas() async {
     isLoading = true;
-    final dataList = await DBHelper.getData('user_agenda');
+    final dataList = await DBHelper.getData('table');
     _items = dataList
         .map(
           (item) => Agenda(
@@ -60,7 +60,7 @@ class Agendas with ChangeNotifier {
 
   Future<void> deleteAgendas(String userId) async {
     isLoading = true;
-    await DBHelper.deleteData('user_agenda', userId);
+    await DBHelper.deleteData('table', userId);
     isLoading = false;
     notifyListeners();
   }
@@ -87,7 +87,7 @@ class Agendas with ChangeNotifier {
     _items.add(newAgenda);
     notifyListeners();
     DBHelper.updateData(
-        'user_agenda',
+        'table',
         {
           'userId': newAgenda.userId,
           'title': newAgenda.title,
